@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f4">
+  <meta name="description" content="A responsive retail sales dashboard built with HTML, CSS, JavaScript, and SVG.">
+  <title>Retail Sales Dashboard · FY 2025</title>
+  <style>
+    :root{color-scheme:light;--ink:#17251f;--muted:#6c7972;--paper:#f6f7f4;--surface:#fff;--line:#e5e9e5;--green:#21745d;--soft:#e5f2ed;--accent:#d77a52;--shadow:0 12px 34px #27362e0b}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{max-width:1180px;margin:0 auto;padding:48px 28px 56px}.topline{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:36px}.brand{display:flex;align-items:center;gap:11px;font-weight:650;letter-spacing:-.02em}.brandmark{width:33px;height:33px;border-radius:11px;background:var(--green);display:grid;place-items:center;color:white;font-size:18px}.eyebrow{text-transform:uppercase;font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:650}.hero{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:26px}.hero h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.055em;line-height:1.1;font-weight:600;margin:6px 0 9px}.hero p{color:var(--muted);margin:0}.toolbar{display:flex;align-items:center;gap:10px;flex-shrink:0}.toolbar label{font-size:13px;color:var(--muted)}select{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 34px 10px 12px;cursor:pointer}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}.metric,.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.metric{padding:21px 23px}.metric-label{color:var(--muted);font-size:13px}.metric-value{font-size:30px;letter-spacing:-.04em;font-weight:600;margin:5px 0 2px;font-variant-numeric:tabular-nums}.metric-foot{font-size:12px;color:var(--muted)}.content{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr);gap:18px}.panel{padding:23px;min-width:0}.panel-head{display:flex;align-items:start;justify-content:space-between;gap:14px;margin-bottom:17px}.panel h2{font-size:16px;letter-spacing:-.02em;font-weight:600;margin:0}.panel-sub{font-size:12px;color:var(--muted);margin-top:3px}.legend{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:12px;white-space:nowrap}.legend-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}svg{width:100%;height:auto;display:block;overflow:visible}.gridline{stroke:var(--line);stroke-width:1}.axis-label{fill:var(--muted);font-size:11px}.trend-area{fill:var(--green);opacity:.08}.trend-line{fill:none;stroke:var(--green);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.point{fill:var(--green);stroke:white;stroke-width:2}.point.is-muted{opacity:.3}.category-list{display:grid;gap:17px;margin-top:25px}.category-top{display:flex;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:7px}.category-name{font-weight:500}.category-value{color:var(--muted);font-variant-numeric:tabular-nums}.track{height:8px;background:#edf0ed;border-radius:999px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:inherit}.category:nth-child(2) .fill{opacity:.76}.category:nth-child(3) .fill{opacity:.56}.category:nth-child(4) .fill{opacity:.38}.insight{margin-top:24px;padding:13px 14px;background:var(--soft);border-radius:11px;color:#315c4e;font-size:12px}.source{margin-top:18px;color:var(--muted);font-size:12px}.footer{display:flex;justify-content:space-between;gap:16px;margin-top:23px;color:var(--muted);font-size:12px}.footer a{color:var(--green);text-decoration:none}.footer a:hover{text-decoration:underline}
+    @media(max-width:760px){main{padding:30px 18px 40px}.content{grid-template-columns:1fr}.metrics{gap:10px}.metric{padding:17px}.metric-value{font-size:25px}}
+    @media(max-width:520px){.topline{margin-bottom:28px}.hero{align-items:start;flex-direction:column;margin-bottom:20px}.toolbar{width:100%;justify-content:space-between}.toolbar select{flex:1;max-width:220px}.metrics{grid-template-columns:1fr}.metric{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px}.metric-value{grid-column:2;grid-row:1/3;margin:0}.metric-foot{grid-column:1}.panel{padding:18px}.footer{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="topline"><div class="brand"><span class="brandmark" aria-hidden="true">↗</span><span>Northstar <span style="font-weight:400;color:var(--muted)">/ Analytics</span></span></div><span class="eyebrow">Portfolio project · FY 2025</span></div>
+    <header class="hero"><div><div class="eyebrow">Retail performance</div><h1>Sales overview</h1><p>Track revenue, orders, and the categories driving the year.</p></div><div class="toolbar"><label for="period">Reporting period</label><select id="period"><option value="all">Full year</option><option value="h1">January – June</option><option value="h2">July – December</option></select></div></header>
+    <section class="metrics" aria-label="Selected period summary">
+      <article class="metric"><div class="metric-label">Gross sales</div><div class="metric-value" id="revenue">—</div><div class="metric-foot" id="revenue-period">FY 2025</div></article>
+      <article class="metric"><div class="metric-label">Orders</div><div class="metric-value" id="orders">—</div><div class="metric-foot" id="orders-period">FY 2025</div></article>
+      <article class="metric"><div class="metric-label">Average order</div><div class="metric-value" id="aov">—</div><div class="metric-foot">Gross sales ÷ orders</div></article>
+    </section>
+    <div class="content">
+      <section class="panel" aria-labelledby="trend-title"><div class="panel-head"><div><h2 id="trend-title">Revenue over time</h2><div class="panel-sub">Monthly gross sales, USD</div></div><div class="legend"><span class="legend-dot"></span>Revenue</div></div><svg id="trend" role="img" aria-label="Monthly revenue line chart"></svg></section>
+      <section class="panel" aria-labelledby="category-title"><div class="panel-head"><div><h2 id="category-title">Category mix</h2><div class="panel-sub">Share of selected period revenue</div></div></div><div class="category-list" id="categories" role="img" aria-label="Revenue share by product category"></div><div class="insight" id="insight" aria-live="polite"></div></section>
+    </div>
+    <div class="footer"><span>Illustrative synthetic data · FY 2025</span><span>Built with HTML, CSS &amp; JavaScript · <a href="data/sales-2025.csv">View source data</a></span></div>
+  </main>
+  <script>
+    const data = [
+      {month:'Jan',revenue:182000,orders:2600},{month:'Feb',revenue:191000,orders:2700},
+      {month:'Mar',revenue:205000,orders:2900},{month:'Apr',revenue:216000,orders:3000},
+      {month:'May',revenue:229000,orders:3100},{month:'Jun',revenue:241000,orders:3200},
+      {month:'Jul',revenue:237000,orders:3000},{month:'Aug',revenue:232000,orders:2900},
+      {month:'Sep',revenue:251000,orders:3100},{month:'Oct',revenue:268000,orders:3200},
+      {month:'Nov',revenue:291000,orders:3600},{month:'Dec',revenue:318000,orders:5120}
+    ];
+    const mix = [{name:'Electronics',share:.38},{name:'Home',share:.27},{name:'Apparel',share:.21},{name:'Other',share:.14}];
+    const ranges={all:[0,12],h1:[0,6],h2:[6,12]};
+    const labels={all:'FY 2025',h1:'Jan – Jun 2025',h2:'Jul – Dec 2025'};
+    const fmtMoney = n => '$'+Math.round(n).toLocaleString('en-US');
+    const svgEl = (name,attrs={},text='')=>{const n=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(text)n.textContent=text;return n};
+    function update(){
+      const key=document.getElementById('period').value,[start,end]=ranges[key],rows=data.slice(start,end);
+      const revenue=rows.reduce((s,d)=>s+d.revenue,0),orders=rows.reduce((s,d)=>s+d.orders,0);
+      document.getElementById('revenue').textContent=fmtMoney(revenue);
+      document.getElementById('orders').textContent=orders.toLocaleString('en-US');
+      document.getElementById('aov').textContent='$'+(revenue/orders).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+      document.getElementById('revenue-period').textContent=labels[key];
+      document.getElementById('orders-period').textContent=labels[key];
+      const list=document.getElementById('categories');list.replaceChildren();
+      mix.forEach(c=>{const row=document.createElement('div');row.className='category';const top=document.createElement('div');top.className='category-top';const name=document.createElement('span');name.className='category-name';name.textContent=c.name;const value=document.createElement('span');value.className='category-value';value.textContent=Math.round(c.share*100)+'% · '+fmtMoney(revenue*c.share);top.append(name,value);const track=document.createElement('div');track.className='track';const fill=document.createElement('div');fill.className='fill';fill.style.width=(c.share/.38*100)+'%';track.append(fill);row.append(top,track);list.append(row)});
+      document.getElementById('insight').textContent=`Electronics leads the mix at 38%, contributing ${fmtMoney(revenue*.38)} in this period.`;
+      draw(rows,start);
+    }
+    function draw(rows,offset){
+      const svg=document.getElementById('trend'),w=Math.max(300,Math.floor(svg.parentElement.clientWidth-46)),h=230,left=45,right=9,top=15,bottom=31;
+      const vals=rows.map(d=>d.revenue/1000),lo=150,hi=350,ph=h-top-bottom,pw=w-left-right;
+      svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${w} ${h}`);svg.setAttribute('height',h);
+      [150,200,250,300,350].forEach(v=>{const y=top+(hi-v)/(hi-lo)*ph;svg.append(svgEl('line',{x1:left,y1:y,x2:w-right,y2:y,class:'gridline'}),svgEl('text',{x:left-8,y:y+4,'text-anchor':'end',class:'axis-label'},'$'+v+'k'))});
+      const pts=vals.map((v,i)=>[left+(rows.length===1?pw/2:i*pw/(rows.length-1)),top+(hi-v)/(hi-lo)*ph]);
+      const line=pts.map((p,i)=>`${i?'L':'M'}${p[0]},${p[1]}`).join(' ');
+      svg.append(svgEl('path',{d:`${line} L${pts.at(-1)[0]},${h-bottom} L${pts[0][0]},${h-bottom} Z`,class:'trend-area','aria-hidden':'true'}));
+      svg.append(svgEl('path',{d:line,class:'trend-line','aria-hidden':'true'}));
+      pts.forEach((p,i)=>{const monthIndex=offset+i;const circle=svgEl('circle',{cx:p[0],cy:p[1],r:4,class:'point'});circle.append(svgEl('title',{},`${data[monthIndex].month}: ${fmtMoney(data[monthIndex].revenue)}`));svg.append(circle);if(i%2===0||i===pts.length-1)svg.append(svgEl('text',{x:p[0],y:h-9,'text-anchor':'middle',class:'axis-label'},data[monthIndex].month))});
+    }
+    document.getElementById('period').addEventListener('change',update);
+    new ResizeObserver(()=>update()).observe(document.querySelector('.panel'));
+    update();
+  </script>
+</body>
+</html>
