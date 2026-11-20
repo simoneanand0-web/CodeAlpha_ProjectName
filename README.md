@@ -29,6 +29,18 @@ The report contains aggregate results only. The source leads workbook and indivi
 python task2-eda/eda_analysis.py "path/to/your/workbook.xlsx" --output task2-eda/EDA_Report.html
 ```
 
+## Task 4: Sentiment and Emotion Analysis
+
+Open the [sentiment report](task4-sentiment/index.html) or view the [analysis script](task4-sentiment/sentiment_analysis.py). This project classifies review text as positive, neutral, or negative and summarizes eight lexicon-based emotion signals. It uses an attributed public Amazon cellphone-review sample; the user's business-leads workbook is not included.
+
+To regenerate the report, run:
+
+```powershell
+py task4-sentiment/sentiment_analysis.py --input task4-sentiment/data/amazon_cells_labelled.csv --output task4-sentiment/index.html --source-name "UCI Amazon cellphone reviews"
+```
+
+The UCI source has positive and negative labels only, so the report notes that neutral predictions have no neutral source labels for validation. See the Task 4 README for the dataset citation and license.
+
 ## License
 
 MIT. See [`LICENSE`](LICENSE).
