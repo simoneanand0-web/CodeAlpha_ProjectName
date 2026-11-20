@@ -19,6 +19,16 @@ This repository contains synthetic example data for demonstration. It does not r
 
 Replace the monthly records in `data/sales-2025.csv` and the matching `data` array in `index.html`. Update the `mix` values for your category shares; category shares should sum to 1. The current dashboard is dependency-free and can be hosted as a static page, including with GitHub Pages.
 
+## Task 2: Exploratory Data Analysis
+
+Open the [EDA report](task2-eda/EDA_Report.html) or view the [Python analysis](task2-eda/eda_analysis.py). The report includes dataset questions, structure, patterns, a hypothesis test, and data-quality recommendations.
+
+The report contains aggregate results only. The source leads workbook and individual lead records are not included in this repository. To regenerate it locally, install `pandas`, `numpy`, and `openpyxl`, then run:
+
+```powershell
+python task2-eda/eda_analysis.py "path/to/your/workbook.xlsx" --output task2-eda/EDA_Report.html
+```
+
 ## License
 
 MIT. See [`LICENSE`](LICENSE).
